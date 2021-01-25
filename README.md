@@ -19,7 +19,7 @@ For Tags description: http://genwiki.genealogy.net/GEDCOM-Tags
 
 It uses a library from "FamilySearch" to convert the .ged file to Java objects (https://github.com/FamilySearch/gedcom5-java).
 
-If you don't want to open it on the IDE, you can execute the "FamilyTree.jar" in the folder "shade", but you need JDK 15 to do it.
+If you don't want to open it on the IDE, you can execute the "FamilyTree.jar" in the folder "executable", but you need JDK 15 to do it.
 Link for JDK: https://www.oracle.com/java/technologies/javase-jdk15-downloads.html
 
 Enjoy It!
