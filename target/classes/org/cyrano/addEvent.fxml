@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cyrano.addEventController">
+   <children>
+      <BorderPane>
+         <center>
+            <AnchorPane fx:id="mainPane" disable="true" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Date:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                  <TextField fx:id="placeTF" layoutX="14.0" layoutY="94.0" prefWidth="230.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="90.0" />
+                  <Label layoutX="14.0" layoutY="76.0" text="Place:" AnchorPane.topAnchor="70.0" />
+                  <Label layoutX="15.0" layoutY="130.0" text="Value:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="125.0" />
+                  <ComboBox fx:id="dayCB" layoutX="15.0" layoutY="32.0" prefHeight="26.0" prefWidth="65.0" promptText="Day" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="34.0" />
+                  <ComboBox fx:id="monthCB" layoutX="88.0" layoutY="32.0" prefHeight="26.0" prefWidth="80.0" promptText="Month" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="34.0" />
+                  <ComboBox fx:id="yearCB" layoutX="178.0" layoutY="32.0" prefHeight="26.0" prefWidth="65.0" promptText="Year" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="34.0" />
+                  <ComboBox fx:id="sexCB" layoutX="14.0" layoutY="145.0" prefHeight="26.0" prefWidth="200.0" promptText="Value" visible="false" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="145.0" />
+                  <TextField fx:id="valueTF" layoutX="16.0" layoutY="146.0" prefHeight="26.0" prefWidth="230.0" AnchorPane.leftAnchor="14.0" />
+                  <TextArea fx:id="causeTA" layoutX="14.0" layoutY="200.0" prefHeight="50.0" prefWidth="230.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="200.0" />
+                  <Label layoutX="14.0" layoutY="182.0" text="Cause:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="180.0" />
+               </children></AnchorPane>
+         </center>
+         <bottom>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#doCancel" text="Cancel" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="10.0" />
+                  <Button fx:id="okBtn" disable="true" layoutX="484.0" layoutY="14.0" mnemonicParsing="false" onAction="#doOk" text="Ok" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="10.0" />
+                  <Button fx:id="addBtn" disable="true" layoutX="397.0" layoutY="14.0" mnemonicParsing="false" onAction="#doAdd" text="Add more" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0" />
+               </children>
+            </AnchorPane>
+         </bottom>
+         <top>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <ComboBox fx:id="eventTypeCB" onAction="#selectEvent" prefWidth="150.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="34.0" />
+                  <Label layoutX="14.0" layoutY="14.0" text="Type of Information:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
