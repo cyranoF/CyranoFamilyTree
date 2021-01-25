@@ -177,7 +177,7 @@ public class mainWindowController implements Initializable {
         MenuItem deleteItem = new MenuItem("Delete");   //Remove only if no more conected
         deleteItem.setOnAction(event -> {
             System.out.println("Delete Event");
-            Alert delete = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete the Person?");
+            Alert delete = new Alert(Alert.AlertType.CONFIRMATION, "Not Implemented Yet"); //Do you want to delete the Person?
 
             Optional<ButtonType> result = delete.showAndWait();
             if (result.get() == ButtonType.OK){
@@ -205,7 +205,7 @@ public class mainWindowController implements Initializable {
 
         });
 
-        contextMenu.getItems().addAll(copyItem, deleteItem);
+        contextMenu.getItems().addAll(copyItem);    //, deleteItem
 
         return contextMenu;
     }
