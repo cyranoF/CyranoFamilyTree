@@ -20,10 +20,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
-/*
-maybe to implement :
-    check age of children and parents (min and max ages)
-
+/**
+ * JavaFX FamilyTree program
+ * by Cyrano Fischer
  */
 public class mainWindowController implements Initializable {
 
@@ -386,16 +385,23 @@ public class mainWindowController implements Initializable {
                     disableButtons(false);
                     initializeLinks(this.familyTree.getAllPersons());
 
+                    return;
+
                 } else {
                     wrongFile.showAndWait();
                     System.out.println("Wrong Extention File");
                     tempFile = null;
+                    return;
                 }
+
+
 
             } catch (Exception ex) {
                 System.out.println("Error File Import");
             }
         }
+
+        newStart();
 
 
     }

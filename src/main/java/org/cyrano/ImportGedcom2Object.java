@@ -1,11 +1,9 @@
 package org.cyrano;
 
-
 import org.folg.gedcom.model.*;
 import org.folg.gedcom.parser.ModelParser;
 import org.folg.gedcom.visitors.GedcomWriter;
 import org.xml.sax.SAXParseException;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.*;

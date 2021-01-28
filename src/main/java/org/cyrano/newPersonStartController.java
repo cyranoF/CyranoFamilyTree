@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import org.folg.gedcom.model.EventFact;
 import org.folg.gedcom.model.Name;
 
-
 public class newPersonStartController extends ControllerConnectionAbstract {
 
     @FXML

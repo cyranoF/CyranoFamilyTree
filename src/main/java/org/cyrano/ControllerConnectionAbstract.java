@@ -1,10 +1,7 @@
 package org.cyrano;
 
-
-
 import javafx.scene.control.ComboBox;
 import org.folg.gedcom.model.Person;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
