@@ -1,9 +1,0 @@
-org\cyrano\addEventController.class
-Starter.class
-org\cyrano\ControllerConnectionAbstract.class
-org\cyrano\addFamilyMemberController.class
-org\cyrano\EditNames.class
-org\cyrano\newPersonStartController.class
-org\cyrano\ImportGedcom2Object.class
-org\cyrano\mainWindowController.class
-org\cyrano\App.class

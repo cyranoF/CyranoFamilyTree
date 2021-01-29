@@ -41,10 +41,12 @@ public class App extends Application {
         Optional<ButtonType> result = importOrNew.showAndWait();
         if (result.orElse(impBtn) == impBtn){
             mainWindowController.selectFile();
-            stage.show();}
+            stage.show();
+        }
         else if (result.orElse(newPerBtn) == newPerBtn){
             mainWindowController.newStart();
-            stage.show();}
+            stage.show();
+            }
 
     }
 

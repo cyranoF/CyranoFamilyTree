@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+
 /**
  * JavaFX FamilyTree program
  * by Cyrano Fischer
@@ -45,11 +46,10 @@ public class mainWindowController implements Initializable {
     FileChooser fileChooser = new FileChooser();
 
     File file = null, tempFile = null;
-    ImportGedcom2Object familyTree = new ImportGedcom2Object();
+    ImportGedcom2Object familyTree = null; //
     Stage stage2;
     Stage stage;
     Person actualPerson;
-    //User user = new User();
 
 
     //Change file Confirmation
@@ -78,14 +78,15 @@ public class mainWindowController implements Initializable {
 
 
 
-
-
-
     }
 
+    /**
+     * Initializes a new FamilyTree and the First person
+     */
     public void newStart(){
         actualPerson = new Person();
         actualPerson.setId("I1");
+        familyTree = new ImportGedcom2Object();
 
         try {
             disableButtons(true);
@@ -96,7 +97,6 @@ public class mainWindowController implements Initializable {
             newPersonStartController.setData(familyTree, actualPerson, this);
             stage2 = new Stage();
 
-            //stage.setTitle("New Familiar from " + user.getActualPerson().getNames().get(0).getDisplayValue());
             stage2.setScene(new Scene(root));
             stage2.setTitle("New Person");
             stage2.setOnCloseRequest(e->{
@@ -104,6 +104,7 @@ public class mainWindowController implements Initializable {
                 disableButtons(false);
                 putData();
                 stage2.close();
+
             });
 
             disableButtons(true);
@@ -113,9 +114,11 @@ public class mainWindowController implements Initializable {
             System.err.printf("Error: %s%n", ex.getMessage());
         }
 
-
     }
 
+    /**
+     * for the GEDCOM Format
+     */
     private void configFileChooser(){
         fileChooser.setInitialDirectory( new File(System.getProperty("user.home")));
         fileChooser.getExtensionFilters().addAll(
@@ -172,7 +175,7 @@ public class mainWindowController implements Initializable {
 
         ContextMenu contextMenu = new ContextMenu();
 
-        //todo
+        //
         MenuItem deleteItem = new MenuItem("Delete");   //Remove only if no more conected
         deleteItem.setOnAction(event -> {
             System.out.println("Delete Event");
@@ -220,7 +223,7 @@ public class mainWindowController implements Initializable {
         newItem.setOnAction(event -> addFamilyMember());
 
         /*
-        MenuItem deleteItem = new MenuItem("Delete Connection");    //todo
+        MenuItem deleteItem = new MenuItem("Delete Connection");    //
         deleteItem.setOnAction(event -> {
             Hyperlink selectedHyperlinks = this.FamilyListView.getSelectionModel().getSelectedItem();
             String[] id = selectedHyperlinks.getText().split("ID:");
@@ -290,6 +293,10 @@ public class mainWindowController implements Initializable {
         return contextMenu;
     }
 
+    /**
+     * takes the selected eventFact (Information) to chage it
+     * @param eventFact the object selected in "Informations"
+     */
     private void editEvent(String eventFact) {
         String[] event = eventFact.split(": ");
         event[0] =  event[0].replace(":","");
@@ -381,19 +388,15 @@ public class mainWindowController implements Initializable {
                     this.file = this.tempFile;
                     this.familyTree = new ImportGedcom2Object(file);
                     this.actualPerson = (this.familyTree.getAllPersons().get(0));
-                    putData();
                     disableButtons(false);
                     initializeLinks(this.familyTree.getAllPersons());
-
-                    return;
+                    putData();
 
                 } else {
                     wrongFile.showAndWait();
                     System.out.println("Wrong Extention File");
                     tempFile = null;
-                    return;
                 }
-
 
 
             } catch (Exception ex) {
@@ -401,7 +404,8 @@ public class mainWindowController implements Initializable {
             }
         }
 
-        newStart();
+        if (this.familyTree == null)
+            newStart();
 
 
     }
@@ -420,8 +424,12 @@ public class mainWindowController implements Initializable {
 
                     familyTree = new ImportGedcom2Object();
                     file = tempFile;
+                    stage = (Stage) this.NamesListView.getScene().getWindow();
+                    stage.hide();
                     newStart();
-                    clearGui();
+                    stage.show();
+
+                    initializeLinks(this.familyTree.getAllPersons());
                     putData();
                     disableButtons(false);
 
@@ -464,10 +472,10 @@ public class mainWindowController implements Initializable {
 
 
             } else {
-                if(saveResult.get() == ButtonType.NO){
+                /*if(saveResult.get() == ButtonType.NO){
                     if(stage2 != null)
                         stage2.close();
-                }
+                }*/
                 return saveResult.get() == ButtonType.NO;
             }
         }
@@ -543,17 +551,6 @@ public class mainWindowController implements Initializable {
         setEventListView();
         setNamesListView();
 
-    }
-
-    /**
-    Clears the Gui (Fields, ListView)
-     */
-    private void clearGui(){
-
-        this.EventListView.getItems().clear();
-        this.FamilyListView.getItems().clear();
-        this.PersonsListView.getItems().clear();
-        this.NamesListView.getItems().clear();
     }
 
     /**
