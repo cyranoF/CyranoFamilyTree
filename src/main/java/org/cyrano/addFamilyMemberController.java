@@ -16,8 +16,9 @@ import java.util.*;
 
 public class addFamilyMemberController extends ControllerConnectionAbstract implements Initializable {
 
-
     //region FXML variables
+    @FXML
+    private Label MarPlaceLabel;
     @FXML
     private Label marDateL;
     @FXML
@@ -99,10 +100,10 @@ public class addFamilyMemberController extends ControllerConnectionAbstract impl
         partnerRelationCB.setOnAction(e->{
             if(partnerRelationCB.getValue().equals("Married") | partnerRelationCB.getValue().equals("Widowed")){
                 selectRelation(true, "Marriage Date:", false, "Divorce Date:");
-            }
+            }else
             if(partnerRelationCB.getValue().equals("Divorced")){
                 selectRelation(true,"Marriage Date:", true, "Divorce Date:");
-            }
+            }else
             if (partnerRelationCB.getValue().equals("Engaged")){
                 selectRelation(true,"Engagement Date:", false, "");
             }
@@ -127,6 +128,7 @@ public class addFamilyMemberController extends ControllerConnectionAbstract impl
         MdDayCB.setVisible(marBoolean);
         MdMonthCB.setVisible(marBoolean);
         MdYearCB.setVisible(marBoolean);
+        MarPlaceLabel.setVisible(marBoolean);
 
         marriagePlaceTF.setVisible(marBoolean);
 

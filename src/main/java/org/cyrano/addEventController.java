@@ -18,13 +18,19 @@ public class addEventController extends ControllerConnectionAbstract implements 
 
 
     @FXML
+    private AnchorPane datePane;
+    @FXML
+    private AnchorPane placePane;
+    @FXML
+    private AnchorPane valuePane;
+    @FXML
+    private AnchorPane causePane;
+    @FXML
     private TextArea causeTA;
     @FXML
     private Button okBtn;
     @FXML
     private Button addBtn;
-    @FXML
-    private AnchorPane mainPane;
     @FXML
     private TextField placeTF;
     @FXML
@@ -104,8 +110,9 @@ public class addEventController extends ControllerConnectionAbstract implements 
             stringbuffer += dayCB.getValue() + " ";
         if (monthCB.getValue() != null)
             stringbuffer += monthCB.getValue().toUpperCase() + " ";
-        if (yearCB.getValue() != null)
-            stringbuffer += yearCB.getValue();
+        if (yearCB.getEditor().getText() != null )
+            if(!yearCB.getEditor().getText().equals(""))
+                stringbuffer += yearCB.getEditor().getText();
 
         if (!stringbuffer.equals(""))
             eventFact.setDate(stringbuffer);
@@ -130,27 +137,71 @@ public class addEventController extends ControllerConnectionAbstract implements 
     protected void doCancel() {
         Stage stage = (Stage) eventTypeCB.getScene().getWindow();
         mainController.disableButtons(false);
+        sendData();
         stage.close();
     }
 
     @FXML
     private void selectEvent() {
-        if(eventTypeCB.getValue().equals("Sex")){
-            sexCB.getItems().setAll("M","F","unknown");
-            sexCB.setVisible(true);
-            valueTF.setVisible(false);
-        }else
-        if (eventTypeCB.getValue().equals("Death")){            //maybe other way more clear?
-            sexCB.setVisible(false);
-            valueTF.setVisible(false);
-        }else {
-            sexCB.getItems().setAll("");
-            sexCB.setVisible(false);
-            valueTF.setVisible(true);
+
+        clearAll();
+
+        switch (eventTypeCB.getValue()) {
+            case "Sex":
+                sexCB.getItems().setAll("M", "F", "unknown");
+                sexCB.setVisible(true);
+                valueTF.setVisible(false);
+                datePane.setDisable(true);
+                placePane.setDisable(true);
+                valuePane.setDisable(false);
+                causePane.setDisable(true);
+                break;
+            case "Death":
+            case "Divorce":
+                datePane.setDisable(false);
+                placePane.setDisable(false);
+                valuePane.setDisable(true);
+                causePane.setDisable(false);
+                break;
+            case "Birth":
+            case "Engagement":
+            case "Marriage":
+                datePane.setDisable(false);
+                placePane.setDisable(false);
+                valuePane.setDisable(true);
+                causePane.setDisable(true);
+
+                break;
+            case "Email":
+            case "Eyes":
+                datePane.setDisable(true);
+                placePane.setDisable(true);
+                valuePane.setDisable(false);
+                causePane.setDisable(true);
+                break;
+
+            default:
+                datePane.setDisable(false);
+                placePane.setDisable(false);
+                valuePane.setDisable(false);
+                causePane.setDisable(false);
         }
-        mainPane.setDisable(false);
+
         okBtn.setDisable(false);
         addBtn.setDisable(false);
+    }
+
+    private void clearAll(){
+        sexCB.setVisible(false);
+        valueTF.setVisible(true);
+        placeTF.clear();
+        valueTF.clear();
+        causeTA.clear();
+        dayCB.getSelectionModel().clearSelection();
+        monthCB.getSelectionModel().clearSelection();
+        yearCB.getEditor().clear();
+        yearCB.getSelectionModel().clearSelection();
+
     }
 
 

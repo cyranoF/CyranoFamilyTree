@@ -422,7 +422,7 @@ public class mainWindowController implements Initializable {
                 tempFile = fileChooser.showSaveDialog(stage);
                 if(tempFile!=null){
 
-                    familyTree = new ImportGedcom2Object();
+                    //familyTree = new ImportGedcom2Object();
                     file = tempFile;
                     stage = (Stage) this.NamesListView.getScene().getWindow();
                     stage.hide();
