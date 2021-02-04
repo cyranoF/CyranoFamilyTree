@@ -46,7 +46,7 @@ public class mainWindowController implements Initializable {
     FileChooser fileChooser = new FileChooser();
 
     File file = null, tempFile = null;
-    ImportGedcom2Object familyTree = null; //
+    GedcomEditor familyTree = null; //
     Stage stage2;
     Stage stage;
     Person actualPerson;
@@ -86,7 +86,7 @@ public class mainWindowController implements Initializable {
     public void newStart(){
         actualPerson = new Person();
         actualPerson.setId("I1");
-        familyTree = new ImportGedcom2Object();
+        familyTree = new GedcomEditor();
 
         try {
             disableButtons(true);
@@ -386,7 +386,7 @@ public class mainWindowController implements Initializable {
                 {
                     System.out.println("File Import successful");
                     this.file = this.tempFile;
-                    this.familyTree = new ImportGedcom2Object(file);
+                    this.familyTree = new GedcomEditor(file);
                     this.actualPerson = (this.familyTree.getAllPersons().get(0));
                     disableButtons(false);
                     initializeLinks(this.familyTree.getAllPersons());
@@ -422,7 +422,7 @@ public class mainWindowController implements Initializable {
                 tempFile = fileChooser.showSaveDialog(stage);
                 if(tempFile!=null){
 
-                    //familyTree = new ImportGedcom2Object();
+                    //familyTree = new GedcomEditor();
                     file = tempFile;
                     stage = (Stage) this.NamesListView.getScene().getWindow();
                     stage.hide();
@@ -760,10 +760,10 @@ public class mainWindowController implements Initializable {
 
     /**
      * Connection with other controllers to exchange data
-     * @param obj   a object of type ImportGedcom2Object
+     * @param obj   a object of type GedcomEditor
      * @param ap    the actual person
      */
-    public void getData(ImportGedcom2Object obj, Person ap){
+    public void getData(GedcomEditor obj, Person ap){
         this.familyTree = obj;
         this.actualPerson = ap;
         putData();

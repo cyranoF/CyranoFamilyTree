@@ -8,17 +8,17 @@ import java.util.List;
 
 public abstract class ControllerConnectionAbstract {
 
-    protected ImportGedcom2Object familyTree;
+    protected GedcomEditor familyTree;
     protected Person actualPerson;
     protected mainWindowController mainController;
 
     /**
      * Sets the main Variables to edit the Person Names
-     * @param obj   the custom "familyTree" of type ImportGedcom2Object
+     * @param obj   the custom "familyTree" of type GedcomEditor
      * @param ap    th Person to be edited
      * @param controllM    the Controller calling this methode, so it can sand the information back
      */
-    public void setData(ImportGedcom2Object obj, Person ap, mainWindowController controllM){
+    public void setData(GedcomEditor obj, Person ap, mainWindowController controllM){
         this.actualPerson = ap;
         this.familyTree = obj;
         this.mainController = controllM;

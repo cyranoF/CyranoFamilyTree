@@ -23,7 +23,7 @@ public class EditNames extends ControllerConnectionAbstract {
     @FXML
     private TextField marNameTextField;
 /*
-    ImportGedcom2Object familyTree;
+    GedcomEditor familyTree;
     Person actualPerson;
     mainWindowController mainController;
 */

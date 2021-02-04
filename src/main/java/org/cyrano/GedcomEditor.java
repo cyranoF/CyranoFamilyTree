@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class ImportGedcom2Object {
+public class GedcomEditor {
 
     private Gedcom gc;
     private final Map<String, String> eventTagDisplayMap = new HashMap<>();
@@ -27,7 +27,7 @@ public class ImportGedcom2Object {
     /**
     Constructor to import the GEDCOM from a .ged file
      */
-    public ImportGedcom2Object(File file) {
+    public GedcomEditor(File file) {
 
         try {
             ModelParser mp = new ModelParser();
@@ -45,7 +45,7 @@ public class ImportGedcom2Object {
     /**
      * Constructor in case there is no File to import
      */
-    public ImportGedcom2Object(){
+    public GedcomEditor(){
         gc = new Gedcom();
         gc.createIndexes();
         setEventTags();
